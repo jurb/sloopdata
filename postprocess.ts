@@ -24,7 +24,7 @@ const parsed = await parse(decodedContent, {
     strip: true,
 })
 
-import administrativeAreasPropertiesFlat from "./administrativeAreas.json" with { type: "json" }
+import administrativeAreasPropertiesFlat from "./administrativeAreas.json"
 
 
 
