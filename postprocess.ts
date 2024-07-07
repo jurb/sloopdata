@@ -3,7 +3,6 @@ const filename = Deno.args[0] // Same name as downloaded_filename
 
 console.log(`Processing ${filename}...`)
 
-
-import { decompress } from "https://deno.land/x/zip@v1.2.5/mod.ts";
-
-console.log(await decompress(filename))
+const result = await unZipFromFile(filename, filename + '.csv')
+const output = result ? 'File unzipped successfully' : 'Error unzipping'
+console.log(output)
