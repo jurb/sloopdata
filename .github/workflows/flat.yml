@@ -25,10 +25,13 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: unzip bag.zip
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Commit and push changes
-        uses: devops-infra/action-commit-push@master
+      - name: Commit files
+        run: |
+          git config --local user.name "jurb"
+          git add bag_panden.csv
+          git commit -m "Adding bag_panden.csv"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: Updated data
+          force: true
