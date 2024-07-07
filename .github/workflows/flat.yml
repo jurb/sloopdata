@@ -1,0 +1,23 @@
+name: data
+on:
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch: {}
+  push:
+    paths:
+      - .github/workflows/flat.yml
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup deno
+        uses: denoland/setup-deno@main
+        with:
+          deno-version: v1.10.x
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Fetch data
+        uses: githubocto/flat@v3
+        with:
+          http_url: https://api.data.amsterdam.nl/bulk-data/csv/bag_panden.csv.zip?x-api-key=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUzNDM1NDU0Mjc2MjgyNDUyNzEsImV4cCI6MTczMDk3Mzk5Nn0.fJFsI6joJABhzN5n48FFSkrtWKcOUxBlvCmohkog8RtFF6ow0hLYXrI58-EMvwWLWhsDlkcEQBBVLFTNVRggCQ
+          downloaded_filename: bag.csv
