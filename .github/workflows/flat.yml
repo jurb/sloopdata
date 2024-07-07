@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - .github/workflows/flat.yml
+      - ./postprocess.ts
 jobs:
   scheduled:
     runs-on: ubuntu-latest
@@ -21,3 +22,4 @@ jobs:
         with:
           http_url: https://api.data.amsterdam.nl/bulk-data/csv/bag_panden.csv.zip?x-api-key=eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUzNDM1NDU0Mjc2MjgyNDUyNzEsImV4cCI6MTczMDk3Mzk5Nn0.fJFsI6joJABhzN5n48FFSkrtWKcOUxBlvCmohkog8RtFF6ow0hLYXrI58-EMvwWLWhsDlkcEQBBVLFTNVRggCQ
           downloaded_filename: bag.zip
+          postprocess: ./postprocess.ts
