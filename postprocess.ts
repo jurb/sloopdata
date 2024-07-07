@@ -1,4 +1,6 @@
 import { unZipFromFile } from "https://deno.land/x/flat@0.0.15/src/zip.ts";
+import { parse } from "jsr:@std/csv";
+import { writeJSON } from 'https://deno.land/x/flat/mod.ts'
 
 // The filename is the first invocation argument
 const filename = Deno.args[0] // Same name as downloaded_filename
@@ -7,16 +9,8 @@ const filename = Deno.args[0] // Same name as downloaded_filename
 console.log(`Processing ${filename}...`)
 
 const result = await unZipFromFile(filename)
-// const output = result ? 'File unzipped successfully' : 'Error unzipping'
-// console.log(output)
 
-
-
-
-
-import { parse } from "jsr:@std/csv";
-import { writeJSON } from 'https://deno.land/x/flat/mod.ts'
-const rawContent = Deno.readFileSync(result)
+const rawContent = Deno.readFileSync('./bag_panden.csv')
 const decodedContent = new TextDecoder().decode(rawContent)
 // Parse it
 const parsed = await parse(decodedContent, {
@@ -77,4 +71,8 @@ const bag_panden_gesloopt = bag_panden
         ...rest
     }))
 
-console.log(bag_panden_gesloopt)
+// console.log(bag_panden_gesloopt)
+
+await writeJSON('bag_panden_gesloopt.json', bag_panden_gesloopt) // create a new JSON file with just the Bitcoin price
+console.log("Wrote a post process file")
+
