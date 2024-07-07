@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - .github/workflows/flat.yml
+      - postprocess.ts
 jobs:
   scheduled:
     runs-on: ubuntu-latest
@@ -25,13 +26,7 @@ jobs:
         uses: montudor/action-zip@v1
         with:
           args: unzip bag.zip
-      - name: Commit files
-        run: |
-          git config --local user.name "jurb"
-          git add bag_panden.csv
-          git commit -m "Adding bag_panden.csv"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Fetch data
+        uses: githubocto/flat@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+          postprocess: postprocess.ts
