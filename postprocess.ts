@@ -76,3 +76,7 @@ const bag_panden_gesloopt = bag_panden
 await writeJSON('bag_panden_gesloopt.json', bag_panden_gesloopt) // create a new JSON file with just the Bitcoin price
 console.log("Wrote a post process file")
 
+const bag_panden_gesloopt_klein = bag_panden_gesloopt.map(({ stadsdeel, wijk, buurt, Registratiedatum, Statusomschrijving, Oorspronkelijkbouwjaar, ...rest }) => ({ stadsdeel, wijk, buurt, Registratiedatum, Statusomschrijving, Oorspronkelijkbouwjaar }))
+
+await writeJSON('bag_panden_gesloopt_klein.json', bag_panden_gesloopt_klein) // create a new JSON file with just the Bitcoin price
+console.log("Wrote a post process file")
