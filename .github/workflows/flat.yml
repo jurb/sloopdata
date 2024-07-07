@@ -24,4 +24,4 @@ jobs:
       - name: Unzip data
         uses: montudor/action-zip@v1
         with:
-          args: unzip -qq ./bag.zip -d bag.csv
+          args: unzip -qq bag.zip -d bag.csv
