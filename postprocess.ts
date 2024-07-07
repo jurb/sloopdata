@@ -6,4 +6,4 @@ console.log(`Processing ${filename}...`)
 
 import { decompress } from "https://deno.land/x/zip@v1.2.5/mod.ts";
 
-console.log(await decompress("bag.zip"))
+console.log(await decompress(filename))
