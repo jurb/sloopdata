@@ -1,7 +1,9 @@
 name: data
 on:
   schedule:
-    - cron: 0 0 * * *
+    # - cron: 0 0 * * *
+    # never run this by going for feb 31 for now
+    - cron: 0 0 5 31 2 ?
   workflow_dispatch: {}
   push:
     paths:
